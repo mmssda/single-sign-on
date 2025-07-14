@@ -20,7 +20,7 @@ class CreateRolesTable extends Migration
             $table->bigInteger('application_id');
             $table->bigInteger('menu_id');
             $table->longText('payload');
-            $table->tinyInteger('isvisible');
+            $table->tinyInteger('is_visible');
             $table->timestamps();
 
             $table->foreign('application_id')->references('id')->on('applications')->onDelete('cascade');
