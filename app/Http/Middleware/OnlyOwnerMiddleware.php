@@ -10,10 +10,10 @@ class OnlyOwnerMiddleware
    
     public function handle($request, Closure $next)
     {
-          if (Auth::check() && Auth::user()->user_type === 'owner') {
-            return $next($request);
+        if (!Auth::check() || Auth::user()->user_type !== 'owner') {
+            abort(403);
         }
 
-        abort(403, 'Unauthorized');
+        return $next($request);
     }
 }
