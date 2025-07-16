@@ -9,23 +9,22 @@ use Illuminate\Support\ServiceProvider;
 
 class UserServiceProvider extends ServiceProvider implements DeferrableProvider
 {
-
-  
-
-    public function provides():array
-    {
-        return [];
-    }
     /**
      * Register services.
      *
      * @return void
      */
+  
     public function register()
     {
-        //
          $this->app->singleton(LoginServiceInterface::class, OwnerLoginService::class);
     }
+
+    public function provides():array
+    {
+        return [LoginServiceInterface::class];
+    }
+   
 
     /**
      * Bootstrap services.
