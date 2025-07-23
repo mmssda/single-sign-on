@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateClientAppTable extends Migration
+class ClientAppsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateClientAppTable extends Migration
      */
     public function up()
     {
-        Schema::create('client_app', function (Blueprint $table) {
+          Schema::create('client_apps', function (Blueprint $table) {
             $table->bigInteger('id')->primary();
             $table->uuid('owner_id');
             $table->string("app_name")->unique();
@@ -38,6 +38,6 @@ class CreateClientAppTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('client_app');
+        //
     }
 }
