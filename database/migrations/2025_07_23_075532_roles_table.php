@@ -16,7 +16,7 @@ class RolesTable extends Migration
         //
             Schema::create('roles', function (Blueprint $table) {
             $table->bigInteger('id')->primary();
-            $table->uuid('user_id');
+            $table->bigInteger('user_id');
             $table->bigInteger('role_group_id');
             $table->bigInteger('application_id');
             $table->bigInteger('menu_id');

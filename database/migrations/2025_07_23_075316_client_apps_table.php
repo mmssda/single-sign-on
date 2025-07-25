@@ -15,7 +15,7 @@ class ClientAppsTable extends Migration
     {
           Schema::create('client_apps', function (Blueprint $table) {
             $table->bigInteger('id')->primary();
-            $table->uuid('owner_id');
+            $table->bigInteger('owner_id');
             $table->string("app_name")->unique();
             $table->string("slug")->unique();
             $table->string('redirect_url'); // Redirect URI saat login
