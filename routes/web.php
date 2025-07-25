@@ -20,15 +20,40 @@ Route::middleware(['web'])
         ->prefix('owner')
         ->group(function () {
 
-     Route::post('login', 'Owner\LoginController@login');
+    // login 
+     Route::post('login', 'Owner\LoginController@login')->name('login');
 
-    //  Route::get('login', function(){
-    //    return response()->json(['_token' => csrf_token()]);
-    // });
+    //  login csrf token
+     Route::get('login', function(){
+       return response()->json(['_token' => csrf_token()]);
+    });
 
     Route::middleware(['auth', 'owner'])->group(function () {
+        
+        // dashboard
         Route::get('dashboard', function () {
             return 'Halaman Dashboard Owner';
         })->name('owner.dashboard');
+
+        // Register
+        Route::prefix('register')->group(function () {
+            
+            // app
+            Route::resource('clientApp', 'Owner\Registers\AppClientController');
+
+            // modul
+
+            // menu
+
+            // role group
+
+            // role
+
+            // application user fall back
+              Route::resource('applicationUser', 'Owner\Registers\ApplicationUserController');
+
+            
+        });
+      
     });
 });
