@@ -4,14 +4,14 @@ namespace App\Http\Controllers\Owner;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Services\LoginServiceInterface;
+use App\Services\Contracts\OwnerServiceInterface;
 
 class LoginController extends Controller
 {
     
     protected $loginService;
 
-    public function __construct(LoginServiceInterface $loginService)
+    public function __construct(OwnerServiceInterface $loginService)
     {
        
         $this->loginService = $loginService; 
@@ -26,7 +26,7 @@ class LoginController extends Controller
 
         if ($this->loginService->login($credentials)) {
             // Redirect ke halaman yang dimaksud sebelumnya atau ke default
-           return redirect()->intended(route('owner.dashboard'));
+           return redirect()->route('owner.dashboard');
         }
 
     
